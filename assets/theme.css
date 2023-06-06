@@ -10687,6 +10687,14 @@ html[dir=rtl] .product-single__meta .rte{
 .product-single__title{
   margin-bottom:10px;
   word-wrap:break-word;
+  font-family: 'Intervogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2B2725;
 }
 
 .product-single__review-link{
