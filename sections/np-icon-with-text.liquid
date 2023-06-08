@@ -7,7 +7,7 @@
             <div class="icons-text-wrapper">
                 <div class="icon-text">
                 <div class="icon">
-                    <img src="{{ block.settings.icon-img-one | img_url: 'master' }}" alt="Icon 01">
+                    <img src="{{ block.settings.icon-img-one | img_url: '45x45' }}" alt="Icon 01">
                 </div>
                 <div class="text">
                     <p>
@@ -18,7 +18,7 @@
 
                 <div class="icon-text">
                 <div class="icon">
-                    <img src="{{ block.settings.icon-img-two | img_url: 'master' }}" alt="Icon 02">
+                    <img src="{{ block.settings.icon-img-two | img_url: '45x45' }}" alt="Icon 02">
                 </div>
                 <div class="text">
                     <p>
@@ -29,7 +29,7 @@
 
                 <div class="icon-text">
                 <div class="icon">
-                    <img src="{{ block.settings.icon-img-three | img_url: 'master' }}" alt="Icon 03">
+                    <img src="{{ block.settings.icon-img-three | img_url: '45x45' }}" alt="Icon 03">
                 </div>
                 <div class="text">
                     <p>
@@ -40,7 +40,7 @@
 
             </div>
           {% when 'spacer-block' %}
-            <div class="spacer-{{ block.id }}"></div>
+            <div class="spacer-{{ block.id }}"> </div>
         {% endcase %}
       {% endfor %}
     </div>
@@ -84,7 +84,7 @@
         }
 
       {% when 'spacer-block' %}
-        .section-wrapper-{{ section.id }} .section-inner .content-wrapper .spacer-{{ block.id }}{
+        .section-wrapper{{ section.id }} .section-inner .content-wrapper .spacer-{{ block.id }}{
             height: {{ block.settings.spacer-height-desktop }}px;
         }
 
@@ -93,11 +93,55 @@
 
 
   {% comment %}for tablet{% endcomment %}
-  @media screen and (min-width:601px) and(max-width: 1024px) {}
-
+  @media screen and (min-width:601px) and (max-width: 1024px) {
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'icon-text' %}
+                .icons-text-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .icon-text {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+                }
+            {% when 'spacer-block' %}
+                .section-wrapper{{ section.id }} .section-inner .content-wrapper .spacer-{{ block.id }}{
+                    height: {{ block.settings.spacer-height-tablet }}px;
+                }
+        {% endcase %}
+    {% endfor %}
+  }
+        
 
   {% comment %}for mobile{% endcomment %}
-  @media screen and (max-width: 600px) {}
+  @media screen and (max-width: 600px) {
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'icon-text' %}
+                .icons-text-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .icon-text {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+                }
+            {% when 'spacer-block' %}
+                .section-wrapper{{ section.id }} .section-inner .content-wrapper .spacer-{{ block.id }}{
+                    height: {{ block.settings.spacer-height-mobile }}px;
+                }
+        {% endcase %}
+    {% endfor %}
+  }
 </style>
 
 {% schema %}
@@ -169,6 +213,16 @@
             "step": 5,
             "unit": "px",
             "label": "Spacer Height Desktop",
+            "default": 10
+          },
+          {
+            "type": "range",
+            "id": "spacer-height-tablet",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Spacer Height Tablet",
             "default": 10
           }, {
             "type": "range",
