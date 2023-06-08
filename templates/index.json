@@ -324,7 +324,7 @@
         "template--19095931617574__d69d44a2-eb64-4b18-a2ce-1025dbd3f52b-168623590397043602-1": {
           "type": "spacer-block",
           "settings": {
-            "spacer-height-desktop": 10,
+            "spacer-height-desktop": 30,
             "spacer-height-mobile": 10
           }
         }
