@@ -311,9 +311,7 @@
         "template--19095931617574__d69d44a2-eb64-4b18-a2ce-1025dbd3f52b-168623590397043602-0": {
           "type": "icon-text",
           "settings": {
-            "icon-img-one": "shopify:\/\/shop_images\/Ninety_Percent_Free_Shipping.png",
-            "icon-img-two": "shopify:\/\/shop_images\/Ninety_Percent_Profit_Sharing.png",
-            "icon-img-three": "shopify:\/\/shop_images\/Ninety_Percent_Icons-Sustainable.png",
+            "icon-img-one": "shopify:\/\/shop_images\/Ninety_Percent_Free_Shipping.svg",
             "icon-text-one": "Free UK delivery & returns",
             "icon-text-two": "90% of profits shared",
             "icon-text-three": "Responsible, Vegan Materials",
