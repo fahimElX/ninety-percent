@@ -138,6 +138,17 @@
                   {%- endif -%}
                 </p>
               {%- endif -%}
+
+              {% assign currentVariant = product.selected_or_first_available_variant %}
+              <script>
+                console.log({{ currentVariant | json }})
+             
+              </script>
+              
+              <p>
+                Material: {{ currentVariant.option3 }}
+              </p>
+
             </div>
 
             <div data-product-blocks>

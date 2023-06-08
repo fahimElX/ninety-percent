@@ -1,0 +1,200 @@
+<section class="section-wrapper{{ section.id }} np-container">
+  <div class="section-inner">
+    <div class="content-wrapper">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'icon-text' %}
+            <div class="icons-text-wrapper">
+                <div class="icon-text">
+                <div class="icon">
+                    <img src="{{ block.settings.icon-img-one | img_url: 'master' }}" alt="Icon 01">
+                </div>
+                <div class="text">
+                    <p>
+                    {{ block.settings.icon-text-one }}
+                    </p>
+                </div>
+                </div>
+
+                <div class="icon-text">
+                <div class="icon">
+                    <img src="{{ block.settings.icon-img-two | img_url: 'master' }}" alt="Icon 02">
+                </div>
+                <div class="text">
+                    <p>
+                    {{ block.settings.icon-text-two }}
+                    </p>
+                </div>
+                </div>
+
+                <div class="icon-text">
+                <div class="icon">
+                    <img src="{{ block.settings.icon-img-three | img_url: 'master' }}" alt="Icon 03">
+                </div>
+                <div class="text">
+                    <p>
+                    {{ block.settings.icon-text-three }}
+                    </p>
+                </div>
+                </div>
+
+            </div>
+          {% when 'spacer-block' %}
+            <div class="spacer-{{ block.id }}"></div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  {% comment %}for desktop{% endcomment %}
+
+    .np-container {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+    .section-wrapper{{ seciton.id }} .content-wrapper {
+        text-align: center;
+    }
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'icon-text' %}
+        .icons-text-wrapper {
+            display: flex;
+        }
+        .icon-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .text p {
+            font-family: 'Intervogue';
+            font-style: normal;
+            font-weight: 500;
+            font-size: {{ block.settings.font-size }}px;
+            line-height: 21px;
+            text-align: center;
+            letter-spacing: 0.02em;
+            color: {{ block.settings.text-color }} ;
+        }
+
+      {% when 'spacer-block' %}
+        .section-wrapper-{{ section.id }} .section-inner .content-wrapper .spacer-{{ block.id }}{
+            height: {{ block.settings.spacer-height-desktop }}px;
+        }
+
+    {% endcase %}
+  {% endfor %}
+
+
+  {% comment %}for tablet{% endcomment %}
+  @media screen and (min-width:601px) and(max-width: 1024px) {}
+
+
+  {% comment %}for mobile{% endcomment %}
+  @media screen and (max-width: 600px) {}
+</style>
+
+{% schema %}
+  {
+    "name": "Icon With Text",
+    "settings": [],
+    "blocks": [
+      {
+        "name": "Icon-text",
+        "type": "icon-text",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon-img-one",
+            "label": "Add First Icon Here"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon-img-two",
+            "label": "Add Second Icon Here"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon-img-three",
+            "label": "Add Third Icon Here"
+          },
+          {
+            "type": "text",
+            "id": "icon-text-one",
+            "label": "First Icon's Text",
+            "default": "Lorem"
+          }, {
+            "type": "text",
+            "id": "icon-text-two",
+            "label": "Second Icon's Text",
+            "default": "Lorem"
+          }, {
+            "type": "text",
+            "id": "icon-text-three",
+            "label": "Third Icon's Text",
+            "default": "Lorem"
+          },
+          {
+                "type": "range",
+                "id": "font-size",
+                "min": 5,
+                "max": 60,
+                "step": 1,
+                "unit": "px",
+                "label": "Font size",
+                "default": 8
+            }, 
+            {
+                "type": "color",
+                "id": "text-color",
+                "label": "Text Color",
+                "default": "#000000"
+            }
+        ]
+      }, {
+        "name": "Spacer Block",
+        "type": "spacer-block",
+        "settings": [
+          {
+            "type": "range",
+            "id": "spacer-height-desktop",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Spacer Height Desktop",
+            "default": 10
+          }, {
+            "type": "range",
+            "id": "spacer-height-mobile",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Spacer Height Mobile",
+            "default": 10
+          }
+
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Icon With Text",
+        "blocks": [
+          {
+            "type": "icon-text"
+          }, {
+            "type": "spacer-block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

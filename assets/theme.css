@@ -10683,6 +10683,15 @@ html[dir=rtl] .product-single__meta .rte{
   font-size:0.8em;
   margin-bottom:7.5px;
 }
+.product-text-top{
+  font-family: 'Intervogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: #2B2725;
+  }
 
 .product-single__title{
   margin-bottom:10px;
