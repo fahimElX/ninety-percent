@@ -57,8 +57,9 @@
         max-width: 1440px;
         margin: 0 auto;
     }
-    .section-wrapper{{ seciton.id }} .content-wrapper {
-        text-align: center;
+    .section-wrapper{{ section.id }} .section-inner .content-wrapper {
+        max-width: 940px;
+        margin: 0 auto;
     }
   {% for block in section.blocks %}
     {% case block.type %}
