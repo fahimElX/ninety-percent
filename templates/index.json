@@ -305,13 +305,15 @@
         "background_image_position": "center center"
       }
     },
-    "d69d44a2-eb64-4b18-a2ce-1025dbd3f52b": {
+    "4a37646e-2968-4116-8e8d-c9657f4aa107": {
       "type": "np-icon-with-text",
       "blocks": {
-        "template--19095931617574__d69d44a2-eb64-4b18-a2ce-1025dbd3f52b-168623590397043602-0": {
+        "template--19095931617574__4a37646e-2968-4116-8e8d-c9657f4aa107-16862373520a553bad-0": {
           "type": "icon-text",
           "settings": {
-            "icon-img-one": "shopify:\/\/shop_images\/Ninety_Percent_Free_Shipping.svg",
+            "icon-img-one": "shopify:\/\/shop_images\/Ninety_Percent_Free_Shipping.png",
+            "icon-img-two": "shopify:\/\/shop_images\/Ninety_Percent_Profit_Sharing.png",
+            "icon-img-three": "shopify:\/\/shop_images\/Ninety_Percent_Icons-Sustainable.png",
             "icon-text-one": "Free UK delivery & returns",
             "icon-text-two": "90% of profits shared",
             "icon-text-three": "Responsible, Vegan Materials",
@@ -319,17 +321,18 @@
             "text-color": "#2b2725"
           }
         },
-        "template--19095931617574__d69d44a2-eb64-4b18-a2ce-1025dbd3f52b-168623590397043602-1": {
+        "template--19095931617574__4a37646e-2968-4116-8e8d-c9657f4aa107-16862373520a553bad-1": {
           "type": "spacer-block",
           "settings": {
-            "spacer-height-desktop": 30,
-            "spacer-height-mobile": 10
+            "spacer-height-desktop": 140,
+            "spacer-height-tablet": 130,
+            "spacer-height-mobile": 80
           }
         }
       },
       "block_order": [
-        "template--19095931617574__d69d44a2-eb64-4b18-a2ce-1025dbd3f52b-168623590397043602-0",
-        "template--19095931617574__d69d44a2-eb64-4b18-a2ce-1025dbd3f52b-168623590397043602-1"
+        "template--19095931617574__4a37646e-2968-4116-8e8d-c9657f4aa107-16862373520a553bad-0",
+        "template--19095931617574__4a37646e-2968-4116-8e8d-c9657f4aa107-16862373520a553bad-1"
       ],
       "settings": {
       }
@@ -345,6 +348,6 @@
     "background-image-text",
     "blog-posts",
     "map",
-    "d69d44a2-eb64-4b18-a2ce-1025dbd3f52b"
+    "4a37646e-2968-4116-8e8d-c9657f4aa107"
   ]
 }
