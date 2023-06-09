@@ -737,6 +737,19 @@
       },
       "footer-update": {
         "type": "footer-update",
+        "blocks": {
+          "3006fd4e-809f-42f0-ba08-f1d245358a84": {
+            "type": "email-offer-text",
+            "settings": {
+              "email-offer-text": "Sign up below for updates about the world of Ninety Percent, including collection launches, early access to limited-edition products and 10% off your first order.",
+              "font-size-email-text": 8,
+              "email-text-color": "#000000"
+            }
+          }
+        },
+        "block_order": [
+          "3006fd4e-809f-42f0-ba08-f1d245358a84"
+        ],
         "settings": {
           "copyright-text": "Copyright © 2023 Ninety Percent",
           "font-size-copyright": 8,
