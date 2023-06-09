@@ -1,0 +1,334 @@
+<footer class="site-footer np-container" data-section-id="{{ section.id }}" data-section-type="footer-section">
+    <div class="footer inner">
+        <div class="content-wrapper">
+
+            <div class="footer-menus-wrapper">
+                <div class="currency-div">
+                <div class="footer-link">
+                    <span class="footer-links currency-selector-toggler">
+                      {{ localization.country.iso_code }} / {{ localization.country.currency.iso_code }} ( {{ localization.country.currency.symbol }})
+                    </span>   
+                </div>
+                </div>
+
+                <div class="footer-menu{{ block.id }}">
+                    <div class="our-company-menus">
+                        {% if linklists[section.settings.footer-linklist1].links.size > 0 %}
+                            <ul class="menus">
+                                {% for link in linklists[section.settings.footer-linklist1].links %}
+                                    <li>
+                                        <a href="{{ link.url }}">{{ link.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="footer-menu{{ block.id }}">
+                    <div class="customer-service-menus">
+                        {% if linklists[section.settings.footer-linklist-customer-service].links.size > 0 %}
+                            <ul class="menus">
+                                {% for link in linklists[section.settings.footer-linklist-customer-service].links %}
+                                    <li>
+                                        <a href="{{ link.url }}">{{ link.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="footer-menu{{ block.id }}">
+                    <div class="legal-menus">
+                        {% if linklists[section.settings.footer-linklist-legal].links.size > 0 %}
+                            <ul class="menus">
+                                {% for link in linklists[section.settings.footer-linklist-legal].links %}
+                                    <li>
+                                        <a href="{{ link.url }}">{{ link.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="email-subscription-wrapper">      
+                <div>
+                    <div class="footer__item-padding">  {%- if block.settings.show_footer_title -%}
+                        <p class="footer__title small--hide newsletter-title-show">{{ block.settings.title }}</p>    {% comment %} <button
+                    type="button"
+                    class="footer__title sign-up-newsletter-title collapsible-trigger collapsible-trigger-btn medium-up--hide is-open"
+                    aria-controls="Footer-{{ block.id }}">      {{ block.settings.title }}
+                    {% comment %} {%- render 'collapsible-icons' -%} {% endcomment %}
+                    </button> {% endcomment %}
+                {%- endif -%}
+                <div
+                    {% if block.settings.show_footer_title %}
+                    id="Footer-{{ block.id }}"
+                    class="collapsible-content collapsible-content--small is-open"
+                    {% endif %}
+                    style="height: 59px !important">    <div class="collapsible-content__inner">     
+                    <div class="footer__collapsible{% unless block.settings.show_footer_title %} footer_collapsible--disabled{% endunless %}">        
+                    {%- if block.settings.text -%}
+                        {{ block.settings.text }}
+                        {%- endif -%}
+                        
+                        {%- form 'customer', id: 'newsletter-footer' -%}
+                        {%- if form.posted_successfully? -%}
+                            <div class="note note--success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>          {%- endif -%}
+                        {%- if form.context == 'footer' -%}
+                            {%- if form.errors -%}
+                            {{ form.errors | default_errors }}
+                            {%- endif -%}
+                        {%- endif -%}
+                        <label for="Email-{{ block.id }}" class="hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>         
+                    <label for="newsletter-submit-{{ block.id }}" class="hidden-label">{{ 'general.newsletter_form.submit' | t }}</label>          
+                        <input
+                            type="hidden"
+                            name="contact[tags]"
+                            value="prospect,newsletter">          <input
+                            type="hidden"
+                            name="contact[context]"
+                            value="footer">          <div class="footer__newsletter">            <input
+                            type="email"
+                            value="{% if customer %}{{ customer.email }}{% endif %}"
+                            placeholder="Enter your email address"
+                            name="contact[email]"
+                            id="Email-{{ block.id }}"
+                            class="footer__newsletter-input"
+                            autocorrect="off"
+                            autocapitalize="off">            <button
+                            type="submit"
+                            id="newsletter-submit-{{ block.id }}"
+                            class="footer__newsletter-btn np-h7"
+                            name="commit">              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                role="presentation"
+                                class="icon icon-email"
+                                viewBox="0 0 64 64"><path d="M63 52H1V12h62zM1 12l25.68 24h9.72L63 12M21.82 31.68L1.56 51.16m60.78.78L41.27 31.68" /></svg>              
+                                <span class="footer__newsletter-btn-label">                {%- comment -%}
+                                {{ 'general.newsletter_form.submit' | t }}
+                                {%- endcomment -%}
+                                SIGN UP
+                            </span>            
+                                </button>          
+                                </div>        
+                        {%- endform -%}
+                        {%- comment -%}
+                        {% render 'social-icons', additional_classes: 'footer__social' %}
+                        {%- endcomment -%}
+                    </div>    </div>  </div></div>
+                                
+                    <style>
+                                        .footer__title{
+                    font-family: 'Intervogue';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 12.5px;
+                    line-height: 21px;
+                    text-align: center;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
+                    color: #000000;
+                    }
+
+
+                                        .footer__title.small--hide.newsletter-title-show{
+                                        display:block !important;
+                                        margin-bottom:20px;
+                                        }
+                                        
+                    .sign-up-newsletter-title {
+                        pointer-events: none;
+                        letter-spacing: 0.1em;
+                    }
+                    .footer__newsletter-input::placeholder {
+                        color: rgba(0, 0, 0, 0.5);
+                    }
+                    .footer__item-padding{
+                        padding-top: 20px;
+                        padding-bottom: 10px;
+                    }
+                    .footer__newsletter-input{
+                        outline: none;
+                        font-family: Intervogue;
+                        font-style: normal;
+                    }
+
+                                        @media (max-width:500px){
+                                        .footer__item-padding .footer__title{
+                                            text-align:left;
+                                        }
+                                        }
+                    </style>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="footer-copyright-div">
+            <p class="copyright-text">
+                {{ section.settings.copyright-text }}
+            </p>
+
+            <div class="social-icons">
+                <div class="instagram-icon">
+                    <img src="{{ section.settings.instagram-icon | img_url: 'master'}}" alt="instagram icon">
+                </div>
+
+                <div class="facebook-icon">
+                    <img src="{{ section.settings.facebook-icon | img_url: 'master'}}" alt="facebook icon">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    ul{
+        margin: 0;
+    }
+    ul li{
+        list-style: none;
+        margin: 0;
+    }
+    .content-wrapper {
+        display: flex;
+        padding: 50px;
+        justify-content: space-between;
+    }
+    .footer-menus-wrapper {
+        display: flex;
+        width: 47%;
+    }
+    .footer-menus-wrapper .currency-div, .footer-menus-wrapper .footer-menu{{ block.id }} {
+        flex: 1;
+    }
+    .email-subscription-wrapper {
+        width: 33%;
+    }
+    .footer-copyright-div {
+        display: flex;
+        justify-content: space-between;
+        padding: 50px;
+    }
+    .copyright-text {
+        width: 35%;
+    }
+    .social-icons{
+        background: black; 
+        display: flex;
+        gap: 10px;
+        width: 35%;
+        padding: 0 30px;
+    }
+    .instagram-icon, .facebook-icon {
+        background: black;
+    }
+</style>
+
+{% schema %}
+    {
+        "name":"Footer-Update",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Footer Copyright Block"
+            },
+            {
+                "type": "text",
+                "id": "copyright-text",
+                "label": "Copyright Text Here",
+                "default": "copyright ...."
+            },
+            {
+                "type": "range",
+                "id": "font-size-copyright",
+                "min": 5,
+                "max": 60,
+                "step": 1,
+                "unit": "px",
+                "label": "Font size",
+                "default": 8
+            }, 
+            {
+                "type": "color",
+                "id": "copayright-text-color",
+                "label": "Text Color",
+                "default": "#000000"
+            },
+            {
+                "type": "image_picker",
+                "id": "instagram-icon",
+                "label": "Instagram Icon"
+            },
+            {
+                "type": "image_picker",
+                "id": "facebook-icon",
+                "label": "Facebook Icon"
+            },
+            {
+                "type": "header",
+                "content": "Menu Blocks"
+            },
+            {
+                "type": "link_list",
+                "id": "footer-linklist1",
+                "label": "Primary Menu"
+            },
+            {
+                "type": "link_list",
+                "id": "footer-linklist-legal",
+                "label": "Secondary Menu"
+            },
+            {
+                "type": "link_list",
+                "id": "footer-linklist-customer-service",
+                "label": "Legal Menu"
+            }
+        ],
+        "blocks": [
+            {
+                "name": "Email Offer Text",
+                "type": "email-offer-text",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "email-offer-text",
+                        "label": "Email Offer Text",
+                        "default": "Sign up and get 10% off"
+                    },
+                    {
+                        "type": "range",
+                        "id": "font-size-email-text",
+                        "min": 5,
+                        "max": 60,
+                        "step": 1,
+                        "unit": "px",
+                        "label": "Font size",
+                        "default": 8
+                    }, 
+                    {
+                        "type": "color",
+                        "id": "email-text-color",
+                        "label": "Text Color",
+                        "default": "#000000"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Footer-Update",
+                "blocks": [
+                    {
+                        "type": "email-offer-text"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
